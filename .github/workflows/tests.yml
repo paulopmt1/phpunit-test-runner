@@ -35,7 +35,7 @@ jobs:
   # Performs the following steps:
   # - Checks out the repository.
   # - Installs PHP.
-  # - Installs NodeJS 14 with caching configured.
+  # - Installs NodeJS 20 with caching configured.
   # - Prepares the environment for tests.
   # - Runs the tests.
   # - Reports the results.
@@ -44,15 +44,12 @@ jobs:
     name: Run Core PHPUnit tests
     runs-on: ubuntu-latest
 
-    # Remove this line if Github Actions is your preferred means of running the tests.
-    if: ${{ false }}
-
     env:
       # This is only a subset/example of env vars available. See the `.env.default` file for a full list.
       WPT_PREPARE_DIR: ${{ secrets.WPT_PREPARE_DIR }}
       WPT_TEST_DIR: ${{ secrets.WPT_TEST_DIR }}
       WPT_REPORT_API_KEY: ${{ secrets.WPT_REPORT_API_KEY }}
-      WPT_PHP_EXECUTABLE: ${{ secrets.WPT_PHP_EXECUTABLE }}
+      #WPT_PHP_EXECUTABLE: ${{ secrets.WPT_PHP_EXECUTABLE }}
       # Database settings
       WPT_DB_NAME: ${{ secrets.WPT_DB_NAME }}
       WPT_DB_USER: ${{ secrets.WPT_DB_USER }}
@@ -69,7 +66,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@c5fc0d8281aba02c7fda07d3a70cc5371548067d # v2.25.2
         with:
-          php-version: '7.4'
+          php-version: '8.1.29'
           coverage: none
 
       - name: Install NodeJS
